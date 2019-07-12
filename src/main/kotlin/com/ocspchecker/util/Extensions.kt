@@ -5,10 +5,8 @@ import com.ocspchecker.dao.CertificateType
 import com.ocspchecker.dao.OCSPRevocationState
 import org.bouncycastle.asn1.ASN1InputStream
 import org.bouncycastle.asn1.ASN1Sequence
-
 import org.bouncycastle.asn1.DEROctetString
 import org.bouncycastle.asn1.x509.AccessDescription
-import java.net.URI
 import java.security.Principal
 import java.security.cert.X509Certificate
 import javax.naming.ldap.LdapName

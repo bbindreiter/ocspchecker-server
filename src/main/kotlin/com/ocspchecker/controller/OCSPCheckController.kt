@@ -8,7 +8,6 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import java.net.SocketTimeoutException
 import java.net.URL
 import java.util.*
 import javax.net.ssl.HttpsURLConnection
@@ -28,7 +27,7 @@ class OCSPCheckController {
 
         logger.debug("sent JSON $check")
 
-        var check = OCSPCheck(
+        val check = OCSPCheck(
                 publicId = UUID.randomUUID().toString(),
                 domain = check.domain,
                 startTime = System.currentTimeMillis())
@@ -40,15 +39,15 @@ class OCSPCheckController {
         }), java.security.SecureRandom())
 
         HttpsURLConnection.setDefaultSSLSocketFactory(sc.socketFactory)
-        HttpsURLConnection.setDefaultHostnameVerifier(AcceptAllHostnameVerifier());
+        HttpsURLConnection.setDefaultHostnameVerifier(AcceptAllHostnameVerifier())
 
         val url = URL("https://" + check.domain)
         val con = url.openConnection() as HttpsURLConnection
         con.requestMethod = "GET"
-        con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
-        con.connectTimeout = 5000;
-        con.readTimeout = 5000;
-        con.instanceFollowRedirects = false;
+        con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36")
+        con.connectTimeout = 5000
+        con.readTimeout = 5000
+        con.instanceFollowRedirects = false
 
         try {
             logger.debug("response code ${con.responseCode}")

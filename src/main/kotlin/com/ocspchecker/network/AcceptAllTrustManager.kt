@@ -14,8 +14,6 @@ import org.bouncycastle.cert.ocsp.*
 import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
 import java.io.BufferedOutputStream
 import java.io.DataOutputStream
 import java.math.BigInteger
@@ -192,8 +190,8 @@ class AcceptAllTrustManager(private val certListener: (certs: List<Certificate>,
         val connection = URL(url).openConnection() as HttpURLConnection
         connection.setRequestProperty("Content-Type", "application/ocsp-request")
         connection.setRequestProperty("Accept", "application/ocsp-response")
-        connection.connectTimeout = 5000;
-        connection.readTimeout = 5000;
+        connection.connectTimeout = 5000
+        connection.readTimeout = 5000
         connection.doOutput = true
 
         logger.debug("Sending OCSP request to $url")

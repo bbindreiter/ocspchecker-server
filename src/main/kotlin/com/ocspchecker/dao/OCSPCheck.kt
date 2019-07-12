@@ -1,11 +1,7 @@
 package com.ocspchecker.dao
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import java.net.URI
-import java.security.cert.X509Certificate
 import javax.persistence.*
-import javax.persistence.FetchType
-
 
 
 @Entity
