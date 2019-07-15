@@ -1,3 +1,117 @@
-# ocspchecker_server
-
-in development
+## OCSP Checker
+OCSP Checker is a Spring boot application which provides a REST Api for performing OCSP requests for a given domain.
+ This application is used by the [OCSP Checker Chrome Extension](https://github.com/bbindreiter/ocspchecker_chrome)
+ 
+Sample request and response:  
+  ```curl
+  curl -H "Content-Type: application/json;charset=utf-8" -H "Accept: application/json" -d "{  \"domain\": \"google.com\" }" -X POST https://url.com
+  ```
+  
+```json
+{
+  "publicId": "5b400fa8-9726-408e-ba04-56bbf3b8e5f0",
+  "domain": "google.com",
+  "certificates": [
+    {
+      "subject": "*.google.com",
+      "alternativeNames": [
+        "*.google.com",
+        "*.android.com",
+        "*.appengine.google.com",
+        "*.cloud.google.com",
+        "*.crowdsource.google.com",
+        "*.g.co",
+        "*.gcp.gvt2.com",
+        "*.gcpcdn.gvt1.com",
+        "*.ggpht.cn",
+        "*.google-analytics.com",
+        "*.google.ca",
+        "*.google.cl",
+        "*.google.co.in",
+        "*.google.co.jp",
+        "*.google.co.uk",
+        "*.google.com.ar",
+        "*.google.com.au",
+        "*.google.com.br",
+        "*.google.com.co",
+        "*.google.com.mx",
+        "*.google.com.tr",
+        "*.google.com.vn",
+        "*.google.de",
+        "*.google.es",
+        "*.google.fr",
+        "*.google.hu",
+        "*.google.it",
+        "*.google.nl",
+        "*.google.pl",
+        "*.google.pt",
+        "*.googleadapis.com",
+        "*.googleapis.cn",
+        "*.googlecnapps.cn",
+        "*.googlecommerce.com",
+        "*.googlevideo.com",
+        "*.gstatic.cn",
+        "*.gstatic.com",
+        "*.gstaticcnapps.cn",
+        "*.gvt1.com",
+        "*.gvt2.com",
+        "*.metric.gstatic.com",
+        "*.urchin.com",
+        "*.url.google.com",
+        "*.youtube-nocookie.com",
+        "*.youtube.com",
+        "*.youtubeeducation.com",
+        "*.youtubekids.com",
+        "*.yt.be",
+        "*.ytimg.com",
+        "android.clients.google.com",
+        "android.com",
+        "developer.android.google.cn",
+        "developers.android.google.cn",
+        "g.co",
+        "ggpht.cn",
+        "goo.gl",
+        "google-analytics.com",
+        "google.com",
+        "googlecnapps.cn",
+        "googlecommerce.com",
+        "source.android.google.cn",
+        "urchin.com",
+        "www.goo.gl",
+        "youtu.be",
+        "youtube.com",
+        "youtubeeducation.com",
+        "youtubekids.com",
+        "yt.be"
+      ],
+      "serialNumber": "34960629141649332691959643789197588682",
+      "validFrom": 1560846118000,
+      "validTo": 1568103300000,
+      "keyAlgorithm": "EC",
+      "issuer": "Google Internet Authority G3",
+      "signatureAlgorithm": "SHA256withRSA",
+      "type": "OV",
+      "mustStaple": false,
+      "ocspResponderUrl": "http://ocsp.pki.goog/GTSGIAG3",
+      "ocspRevocationState": "GOOD"
+    },
+    {
+      "subject": "Google Internet Authority G3",
+      "alternativeNames": [],
+      "serialNumber": "149685795415515161014990164765",
+      "validFrom": 1497484842000,
+      "validTo": 1639526442000,
+      "keyAlgorithm": "RSA",
+      "issuer": "GlobalSign",
+      "signatureAlgorithm": "SHA256withRSA",
+      "type": "OV",
+      "mustStaple": false,
+      "ocspResponderUrl": "http://ocsp.pki.goog/gsr2",
+      "ocspRevocationState": "GOOD"
+    }
+  ],
+  "trusted": true,
+  "startTime": 1563188466836,
+  "endTime": 1563188467006
+}
+```
