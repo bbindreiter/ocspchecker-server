@@ -14,7 +14,7 @@ data class OCSPCheck(
         val publicId: String = "",
         val domain: String = "",
         @OneToMany(cascade = [CascadeType.ALL])
-        @JoinColumn(name="ocspCheck_id")
+        @JoinColumn(name="ocsp_check_id")
         var certificates: List<Certificate> = emptyList(),
         var trusted: Boolean = false,
         var startTime: Long = 0,
@@ -29,7 +29,7 @@ data class Certificate(
         val id: Long = 0,
         val subject: String = "",
         @ElementCollection
-        @CollectionTable(name="alternative_name")
+        @CollectionTable(name="alternative_name", joinColumns = [JoinColumn(name = "certificate_id")])
         val alternativeNames: List<String> = emptyList(),
         val serialNumber: String = "",
         val validFrom: Long = 0,
